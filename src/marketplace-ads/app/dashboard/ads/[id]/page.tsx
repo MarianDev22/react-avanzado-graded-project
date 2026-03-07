@@ -1,9 +1,25 @@
 import { getAdById } from "@/lib/ads";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type AdDetailParams = Promise<{
   id: string;
 }>;
+
+export async function generateMetadata(props: {
+  params: AdDetailParams;
+}): Promise<Metadata> {
+  const { id } = await props.params;
+
+  const ad = await getAdById(Number(id));
+
+  return {
+    title: ad ? `Ad: ${ad.name}` : "Anuncio no encontrado",
+    description: ad
+      ? `Detalles del proyecto ${ad.name}`
+      : "No se encontró el proyecto",
+  };
+}
 
 const AdDetail = async (props: { params: AdDetailParams }) => {
   const { id } = await props.params;
