@@ -41,6 +41,7 @@ export type AdMinAggregateOutputType = {
   name: string | null
   description: string | null
   price: number | null
+  userId: string | null
   createAt: Date | null
   updatedAt: Date | null
 }
@@ -50,6 +51,7 @@ export type AdMaxAggregateOutputType = {
   name: string | null
   description: string | null
   price: number | null
+  userId: string | null
   createAt: Date | null
   updatedAt: Date | null
 }
@@ -59,6 +61,7 @@ export type AdCountAggregateOutputType = {
   name: number
   description: number
   price: number
+  userId: number
   createAt: number
   updatedAt: number
   _all: number
@@ -80,6 +83,7 @@ export type AdMinAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  userId?: true
   createAt?: true
   updatedAt?: true
 }
@@ -89,6 +93,7 @@ export type AdMaxAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  userId?: true
   createAt?: true
   updatedAt?: true
 }
@@ -98,6 +103,7 @@ export type AdCountAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  userId?: true
   createAt?: true
   updatedAt?: true
   _all?: true
@@ -194,6 +200,7 @@ export type AdGroupByOutputType = {
   name: string
   description: string
   price: number
+  userId: string | null
   createAt: Date
   updatedAt: Date
   _count: AdCountAggregateOutputType | null
@@ -226,8 +233,10 @@ export type AdWhereInput = {
   name?: Prisma.StringFilter<"Ad"> | string
   description?: Prisma.StringFilter<"Ad"> | string
   price?: Prisma.FloatFilter<"Ad"> | number
+  userId?: Prisma.StringNullableFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type AdOrderByWithRelationInput = {
@@ -235,8 +244,10 @@ export type AdOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type AdWhereUniqueInput = Prisma.AtLeast<{
@@ -247,8 +258,10 @@ export type AdWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Ad"> | string
   description?: Prisma.StringFilter<"Ad"> | string
   price?: Prisma.FloatFilter<"Ad"> | number
+  userId?: Prisma.StringNullableFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id">
 
 export type AdOrderByWithAggregationInput = {
@@ -256,6 +269,7 @@ export type AdOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AdCountOrderByAggregateInput
@@ -273,6 +287,7 @@ export type AdScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Ad"> | string
   description?: Prisma.StringWithAggregatesFilter<"Ad"> | string
   price?: Prisma.FloatWithAggregatesFilter<"Ad"> | number
+  userId?: Prisma.StringNullableWithAggregatesFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeWithAggregatesFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Ad"> | Date | string
 }
@@ -283,6 +298,7 @@ export type AdCreateInput = {
   price: number
   createAt?: Date | string
   updatedAt?: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutAdsInput
 }
 
 export type AdUncheckedCreateInput = {
@@ -290,6 +306,7 @@ export type AdUncheckedCreateInput = {
   name: string
   description: string
   price: number
+  userId?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -300,6 +317,7 @@ export type AdUpdateInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutAdsNestedInput
 }
 
 export type AdUncheckedUpdateInput = {
@@ -307,6 +325,7 @@ export type AdUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -316,6 +335,7 @@ export type AdCreateManyInput = {
   name: string
   description: string
   price: number
+  userId?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -333,6 +353,7 @@ export type AdUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -342,6 +363,7 @@ export type AdCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -356,6 +378,7 @@ export type AdMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -365,6 +388,7 @@ export type AdMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -372,6 +396,16 @@ export type AdMinOrderByAggregateInput = {
 export type AdSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   price?: Prisma.SortOrder
+}
+
+export type AdListRelationFilter = {
+  every?: Prisma.AdWhereInput
+  some?: Prisma.AdWhereInput
+  none?: Prisma.AdWhereInput
+}
+
+export type AdOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -398,6 +432,143 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type AdCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.AdCreateWithoutUserInput, Prisma.AdUncheckedCreateWithoutUserInput> | Prisma.AdCreateWithoutUserInput[] | Prisma.AdUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AdCreateOrConnectWithoutUserInput | Prisma.AdCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.AdCreateManyUserInputEnvelope
+  connect?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+}
+
+export type AdUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.AdCreateWithoutUserInput, Prisma.AdUncheckedCreateWithoutUserInput> | Prisma.AdCreateWithoutUserInput[] | Prisma.AdUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AdCreateOrConnectWithoutUserInput | Prisma.AdCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.AdCreateManyUserInputEnvelope
+  connect?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+}
+
+export type AdUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.AdCreateWithoutUserInput, Prisma.AdUncheckedCreateWithoutUserInput> | Prisma.AdCreateWithoutUserInput[] | Prisma.AdUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AdCreateOrConnectWithoutUserInput | Prisma.AdCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.AdUpsertWithWhereUniqueWithoutUserInput | Prisma.AdUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.AdCreateManyUserInputEnvelope
+  set?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  disconnect?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  delete?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  connect?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  update?: Prisma.AdUpdateWithWhereUniqueWithoutUserInput | Prisma.AdUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.AdUpdateManyWithWhereWithoutUserInput | Prisma.AdUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.AdScalarWhereInput | Prisma.AdScalarWhereInput[]
+}
+
+export type AdUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.AdCreateWithoutUserInput, Prisma.AdUncheckedCreateWithoutUserInput> | Prisma.AdCreateWithoutUserInput[] | Prisma.AdUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AdCreateOrConnectWithoutUserInput | Prisma.AdCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.AdUpsertWithWhereUniqueWithoutUserInput | Prisma.AdUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.AdCreateManyUserInputEnvelope
+  set?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  disconnect?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  delete?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  connect?: Prisma.AdWhereUniqueInput | Prisma.AdWhereUniqueInput[]
+  update?: Prisma.AdUpdateWithWhereUniqueWithoutUserInput | Prisma.AdUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.AdUpdateManyWithWhereWithoutUserInput | Prisma.AdUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.AdScalarWhereInput | Prisma.AdScalarWhereInput[]
+}
+
+export type AdCreateWithoutUserInput = {
+  name: string
+  description: string
+  price: number
+  createAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AdUncheckedCreateWithoutUserInput = {
+  id?: number
+  name: string
+  description: string
+  price: number
+  createAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AdCreateOrConnectWithoutUserInput = {
+  where: Prisma.AdWhereUniqueInput
+  create: Prisma.XOR<Prisma.AdCreateWithoutUserInput, Prisma.AdUncheckedCreateWithoutUserInput>
+}
+
+export type AdCreateManyUserInputEnvelope = {
+  data: Prisma.AdCreateManyUserInput | Prisma.AdCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type AdUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.AdWhereUniqueInput
+  update: Prisma.XOR<Prisma.AdUpdateWithoutUserInput, Prisma.AdUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.AdCreateWithoutUserInput, Prisma.AdUncheckedCreateWithoutUserInput>
+}
+
+export type AdUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.AdWhereUniqueInput
+  data: Prisma.XOR<Prisma.AdUpdateWithoutUserInput, Prisma.AdUncheckedUpdateWithoutUserInput>
+}
+
+export type AdUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.AdScalarWhereInput
+  data: Prisma.XOR<Prisma.AdUpdateManyMutationInput, Prisma.AdUncheckedUpdateManyWithoutUserInput>
+}
+
+export type AdScalarWhereInput = {
+  AND?: Prisma.AdScalarWhereInput | Prisma.AdScalarWhereInput[]
+  OR?: Prisma.AdScalarWhereInput[]
+  NOT?: Prisma.AdScalarWhereInput | Prisma.AdScalarWhereInput[]
+  id?: Prisma.IntFilter<"Ad"> | number
+  name?: Prisma.StringFilter<"Ad"> | string
+  description?: Prisma.StringFilter<"Ad"> | string
+  price?: Prisma.FloatFilter<"Ad"> | number
+  userId?: Prisma.StringNullableFilter<"Ad"> | string | null
+  createAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
+}
+
+export type AdCreateManyUserInput = {
+  id?: number
+  name: string
+  description: string
+  price: number
+  createAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AdUpdateWithoutUserInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AdUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AdUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type AdSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -405,8 +576,10 @@ export type AdSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
   name?: boolean
   description?: boolean
   price?: boolean
+  userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
+  user?: boolean | Prisma.Ad$userArgs<ExtArgs>
 }, ExtArgs["result"]["ad"]>
 
 export type AdSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -414,8 +587,10 @@ export type AdSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions
   name?: boolean
   description?: boolean
   price?: boolean
+  userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
+  user?: boolean | Prisma.Ad$userArgs<ExtArgs>
 }, ExtArgs["result"]["ad"]>
 
 export type AdSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -423,8 +598,10 @@ export type AdSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions
   name?: boolean
   description?: boolean
   price?: boolean
+  userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
+  user?: boolean | Prisma.Ad$userArgs<ExtArgs>
 }, ExtArgs["result"]["ad"]>
 
 export type AdSelectScalar = {
@@ -432,20 +609,33 @@ export type AdSelectScalar = {
   name?: boolean
   description?: boolean
   price?: boolean
+  userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
 }
 
-export type AdOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "createAt" | "updatedAt", ExtArgs["result"]["ad"]>
+export type AdOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "userId" | "createAt" | "updatedAt", ExtArgs["result"]["ad"]>
+export type AdInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.Ad$userArgs<ExtArgs>
+}
+export type AdIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.Ad$userArgs<ExtArgs>
+}
+export type AdIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.Ad$userArgs<ExtArgs>
+}
 
 export type $AdPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Ad"
-  objects: {}
+  objects: {
+    user: Prisma.$UserPayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
     description: string
     price: number
+    userId: string | null
     createAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["ad"]>
@@ -842,6 +1032,7 @@ readonly fields: AdFieldRefs;
  */
 export interface Prisma__AdClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  user<T extends Prisma.Ad$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Ad$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -875,6 +1066,7 @@ export interface AdFieldRefs {
   readonly name: Prisma.FieldRef<"Ad", 'String'>
   readonly description: Prisma.FieldRef<"Ad", 'String'>
   readonly price: Prisma.FieldRef<"Ad", 'Float'>
+  readonly userId: Prisma.FieldRef<"Ad", 'String'>
   readonly createAt: Prisma.FieldRef<"Ad", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Ad", 'DateTime'>
 }
@@ -894,6 +1086,10 @@ export type AdFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
+  /**
    * Filter, which Ad to fetch.
    */
   where: Prisma.AdWhereUniqueInput
@@ -912,6 +1108,10 @@ export type AdFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
+  /**
    * Filter, which Ad to fetch.
    */
   where: Prisma.AdWhereUniqueInput
@@ -929,6 +1129,10 @@ export type AdFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Ad
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
   /**
    * Filter, which Ad to fetch.
    */
@@ -978,6 +1182,10 @@ export type AdFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
+  /**
    * Filter, which Ad to fetch.
    */
   where?: Prisma.AdWhereInput
@@ -1026,6 +1234,10 @@ export type AdFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
+  /**
    * Filter, which Ads to fetch.
    */
   where?: Prisma.AdWhereInput
@@ -1069,6 +1281,10 @@ export type AdCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs =
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
+  /**
    * The data needed to create a Ad.
    */
   data: Prisma.XOR<Prisma.AdCreateInput, Prisma.AdUncheckedCreateInput>
@@ -1102,6 +1318,10 @@ export type AdCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   data: Prisma.AdCreateManyInput | Prisma.AdCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1116,6 +1336,10 @@ export type AdUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs =
    * Omit specific fields from the Ad
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
   /**
    * The data needed to update a Ad.
    */
@@ -1168,6 +1392,10 @@ export type AdUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.I
    * Limit how many Ads to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1182,6 +1410,10 @@ export type AdUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs =
    * Omit specific fields from the Ad
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
   /**
    * The filter to search for the Ad to update in case it exists.
    */
@@ -1209,6 +1441,10 @@ export type AdDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs =
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
+  /**
    * Filter which Ad to delete.
    */
   where: Prisma.AdWhereUniqueInput
@@ -1229,6 +1465,25 @@ export type AdDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
+ * Ad.user
+ */
+export type Ad$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * Ad without action
  */
 export type AdDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1240,4 +1495,8 @@ export type AdDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    * Omit specific fields from the Ad
    */
   omit?: Prisma.AdOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdInclude<ExtArgs> | null
 }
