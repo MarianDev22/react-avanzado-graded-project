@@ -41,6 +41,7 @@ export type AdMinAggregateOutputType = {
   name: string | null
   description: string | null
   price: number | null
+  imageUrl: string | null
   userId: string | null
   createAt: Date | null
   updatedAt: Date | null
@@ -51,6 +52,7 @@ export type AdMaxAggregateOutputType = {
   name: string | null
   description: string | null
   price: number | null
+  imageUrl: string | null
   userId: string | null
   createAt: Date | null
   updatedAt: Date | null
@@ -61,6 +63,7 @@ export type AdCountAggregateOutputType = {
   name: number
   description: number
   price: number
+  imageUrl: number
   userId: number
   createAt: number
   updatedAt: number
@@ -83,6 +86,7 @@ export type AdMinAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  imageUrl?: true
   userId?: true
   createAt?: true
   updatedAt?: true
@@ -93,6 +97,7 @@ export type AdMaxAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  imageUrl?: true
   userId?: true
   createAt?: true
   updatedAt?: true
@@ -103,6 +108,7 @@ export type AdCountAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  imageUrl?: true
   userId?: true
   createAt?: true
   updatedAt?: true
@@ -200,6 +206,7 @@ export type AdGroupByOutputType = {
   name: string
   description: string
   price: number
+  imageUrl: string | null
   userId: string | null
   createAt: Date
   updatedAt: Date
@@ -233,6 +240,7 @@ export type AdWhereInput = {
   name?: Prisma.StringFilter<"Ad"> | string
   description?: Prisma.StringFilter<"Ad"> | string
   price?: Prisma.FloatFilter<"Ad"> | number
+  imageUrl?: Prisma.StringNullableFilter<"Ad"> | string | null
   userId?: Prisma.StringNullableFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
@@ -244,6 +252,7 @@ export type AdOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrderInput | Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -258,6 +267,7 @@ export type AdWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Ad"> | string
   description?: Prisma.StringFilter<"Ad"> | string
   price?: Prisma.FloatFilter<"Ad"> | number
+  imageUrl?: Prisma.StringNullableFilter<"Ad"> | string | null
   userId?: Prisma.StringNullableFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
@@ -269,6 +279,7 @@ export type AdOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrderInput | Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -287,6 +298,7 @@ export type AdScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Ad"> | string
   description?: Prisma.StringWithAggregatesFilter<"Ad"> | string
   price?: Prisma.FloatWithAggregatesFilter<"Ad"> | number
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Ad"> | string | null
   userId?: Prisma.StringNullableWithAggregatesFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeWithAggregatesFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Ad"> | Date | string
@@ -296,6 +308,7 @@ export type AdCreateInput = {
   name: string
   description: string
   price: number
+  imageUrl?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
   user?: Prisma.UserCreateNestedOneWithoutAdsInput
@@ -306,6 +319,7 @@ export type AdUncheckedCreateInput = {
   name: string
   description: string
   price: number
+  imageUrl?: string | null
   userId?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
@@ -315,6 +329,7 @@ export type AdUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneWithoutAdsNestedInput
@@ -325,6 +340,7 @@ export type AdUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -335,6 +351,7 @@ export type AdCreateManyInput = {
   name: string
   description: string
   price: number
+  imageUrl?: string | null
   userId?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
@@ -344,6 +361,7 @@ export type AdUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -353,6 +371,7 @@ export type AdUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -363,6 +382,7 @@ export type AdCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -378,6 +398,7 @@ export type AdMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -388,6 +409,7 @@ export type AdMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -420,6 +442,10 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
@@ -430,10 +456,6 @@ export type IntFieldUpdateOperationsInput = {
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
 }
 
 export type AdCreateNestedManyWithoutUserInput = {
@@ -482,6 +504,7 @@ export type AdCreateWithoutUserInput = {
   name: string
   description: string
   price: number
+  imageUrl?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -491,6 +514,7 @@ export type AdUncheckedCreateWithoutUserInput = {
   name: string
   description: string
   price: number
+  imageUrl?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -529,6 +553,7 @@ export type AdScalarWhereInput = {
   name?: Prisma.StringFilter<"Ad"> | string
   description?: Prisma.StringFilter<"Ad"> | string
   price?: Prisma.FloatFilter<"Ad"> | number
+  imageUrl?: Prisma.StringNullableFilter<"Ad"> | string | null
   userId?: Prisma.StringNullableFilter<"Ad"> | string | null
   createAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ad"> | Date | string
@@ -539,6 +564,7 @@ export type AdCreateManyUserInput = {
   name: string
   description: string
   price: number
+  imageUrl?: string | null
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -547,6 +573,7 @@ export type AdUpdateWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -556,6 +583,7 @@ export type AdUncheckedUpdateWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -565,6 +593,7 @@ export type AdUncheckedUpdateManyWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -576,6 +605,7 @@ export type AdSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
   name?: boolean
   description?: boolean
   price?: boolean
+  imageUrl?: boolean
   userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
@@ -587,6 +617,7 @@ export type AdSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions
   name?: boolean
   description?: boolean
   price?: boolean
+  imageUrl?: boolean
   userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
@@ -598,6 +629,7 @@ export type AdSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions
   name?: boolean
   description?: boolean
   price?: boolean
+  imageUrl?: boolean
   userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
@@ -609,12 +641,13 @@ export type AdSelectScalar = {
   name?: boolean
   description?: boolean
   price?: boolean
+  imageUrl?: boolean
   userId?: boolean
   createAt?: boolean
   updatedAt?: boolean
 }
 
-export type AdOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "userId" | "createAt" | "updatedAt", ExtArgs["result"]["ad"]>
+export type AdOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "imageUrl" | "userId" | "createAt" | "updatedAt", ExtArgs["result"]["ad"]>
 export type AdInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Ad$userArgs<ExtArgs>
 }
@@ -635,6 +668,7 @@ export type $AdPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
     name: string
     description: string
     price: number
+    imageUrl: string | null
     userId: string | null
     createAt: Date
     updatedAt: Date
@@ -1066,6 +1100,7 @@ export interface AdFieldRefs {
   readonly name: Prisma.FieldRef<"Ad", 'String'>
   readonly description: Prisma.FieldRef<"Ad", 'String'>
   readonly price: Prisma.FieldRef<"Ad", 'Float'>
+  readonly imageUrl: Prisma.FieldRef<"Ad", 'String'>
   readonly userId: Prisma.FieldRef<"Ad", 'String'>
   readonly createAt: Prisma.FieldRef<"Ad", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Ad", 'DateTime'>

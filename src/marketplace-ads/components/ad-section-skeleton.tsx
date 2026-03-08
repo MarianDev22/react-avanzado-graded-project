@@ -7,6 +7,7 @@ export default function AdSectionSkeleton() {
       <AdCardSkeleton />
       <AdCardSkeleton />
       <AdCardSkeleton />
+      <AdCardSkeleton />
     </div>
   );
 };

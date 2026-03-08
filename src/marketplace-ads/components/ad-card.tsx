@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { DeleteAdButton } from "./buttons/delete-ad-button";
 
 interface AdCardProps {
   name: string;
   id: number;
   description: string;
   price: number;
+  image?: string;
   createdAt: Date;
 }
 
@@ -35,6 +37,7 @@ export const AdCard = (ad: AdCardProps) => {
         >
           Ver detalles
         </Link>
+        <DeleteAdButton adId={ad.id} />
       </div>
     </article>
   );

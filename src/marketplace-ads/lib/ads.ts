@@ -1,7 +1,15 @@
 import { Ad } from "@prisma/client";
 import prisma from "./prisma";
 import { FilterParams } from "@/schemas/filter-schema";
-import { AdResultDto } from "@/types/ad.types";
+import { AdDto, AdResultDto } from "@/types/ad.types";
+
+interface SaveAdInput {
+  name: string;
+  description: string;
+  price: number;
+  image?: string;
+  userId?: string;
+}
 
 const getWhereClause = (filters: FilterParams = {} as FilterParams) => {
   const { query, maxPrice } = filters;
@@ -56,4 +64,33 @@ export const getAdById = async (id: number): Promise<Ad | null> => {
       id,
     },
   });
+};
+
+export const createAd = async (input: SaveAdInput): Promise<AdDto> => {
+  return prisma.ad.create({
+    data: {
+      name: input.name,
+      description: input.description,
+      price: input.price,
+      imageUrl:
+        input.image ||
+        "https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg",
+      userId: input.userId,
+    },
+  });
+};
+
+export const deleteAd = async (
+  adId: number,
+  userId: string,
+): Promise<boolean> => {
+  const adDb = await prisma.ad.findUnique({
+    where: { id: adId, userId: userId },
+    select: { id: true },
+  });
+
+  if (!adDb) return false;
+
+  await prisma.ad.delete({ where: { id: adDb.id } });
+  return true;
 };

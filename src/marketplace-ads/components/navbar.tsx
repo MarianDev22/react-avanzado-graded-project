@@ -15,10 +15,10 @@ export const Navbar = () => {
           Inicio
         </Link>
         <Link
-          href="/dashboard"
+          href="/dashboard/ads/new"
           className="hover:text-teal-600 transition-colors"
         >
-          Mis Anuncios
+          Nuevo Anuncio
         </Link>
 
         <Link

@@ -4,7 +4,7 @@ export interface AdDto {
   description: string;
   price: number;
   //tag String
-  //image
+  image?: string;
   createAt: Date;
   updatedAt: Date;
 }
