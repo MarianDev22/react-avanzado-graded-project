@@ -1,6 +1,8 @@
 import AdSection from "@/components/ad-section";
 import AdSectionSkeleton from "@/components/ad-section-skeleton";
 import SearchBar from "@/components/forms/search-bar";
+import Pagination from "@/components/pagination";
+import { getAds } from "@/lib/ads";
 import { filterSchema } from "@/schemas/filter-schema";
 import { HomePageSearchParams } from "@/types/search-params";
 import { Suspense } from "react";
@@ -15,6 +17,7 @@ export default async function Home(props: {
   const query = validatedFilters.query;
   const order = validatedFilters.order;
   const maxPrice = validatedFilters.maxPrice;
+  const { items, totalPages, currentPage } = await getAds(validatedFilters);
 
   return (
     <main className="min-h-screen bg-slate-50 py-12 dark:bg-zinc-950">
@@ -28,8 +31,9 @@ export default async function Home(props: {
           Anuncios recientes
         </h1>
         <Suspense fallback={<AdSectionSkeleton />}>
-          <AdSection filters={validatedFilters} />
+          <AdSection items={items} />
         </Suspense>
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
       </div>
     </main>
   );
