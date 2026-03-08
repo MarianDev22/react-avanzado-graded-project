@@ -55,15 +55,45 @@ export async function createAdAction(
   }
 }
 
-export async function deleteAdAction(formData: FormData) {
+export async function deleteAdAction(
+  _previousState: AdActionResult,
+  formData: FormData,
+): Promise<AdActionResult> {
   const adId = Number(formData.get("adId"));
   const session = await getSession();
 
-  if (!session) throw new Error("No logueado");
+  if (!session) {
+    return {
+      success: false,
+      message: "No logueado",
+      requestId: Date.now(),
+    };
+  }
 
-  const success = await deleteAd(adId, session.userId);
-  if (!success) throw new Error("No tienes permisos");
+  try {
+    const success = await deleteAd(adId, session.userId);
 
-  revalidatePath("/");
-  revalidatePath("/dashboard");
+    if (!success) {
+      return {
+        success: false,
+        message: "No tienes permisos para borrar este anuncio",
+        requestId: Date.now(),
+      };
+    }
+
+    revalidatePath("/");
+    revalidatePath("/dashboard");
+
+    return {
+      success: true,
+      message: "Anuncio borrado correctamente",
+      requestId: Date.now(),
+    };
+  } catch {
+    return {
+      success: false,
+      message: "Error técnico al intentar borrar",
+      requestId: Date.now(),
+    };
+  }
 }

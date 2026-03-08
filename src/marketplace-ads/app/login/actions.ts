@@ -53,7 +53,7 @@ export const loginAction = async (
   if (!user) {
     return {
       success: false,
-      message: "Credenciales incorrectas",
+      message: "Tus credenciales son incorrectas",
       errors: {},
       values: { email: emailInput },
     };
