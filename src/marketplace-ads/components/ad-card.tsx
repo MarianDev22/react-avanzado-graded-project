@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DeleteAdButton } from "./buttons/delete-ad-button";
+import Image from "next/image";
 
 interface AdCardProps {
   name: string;
@@ -21,6 +22,19 @@ function formatDate(date: Date): string {
 export const AdCard = (ad: AdCardProps) => {
   return (
     <article className="flex flex-col h-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative">
+      <div className="relative w-full h-48 bg-slate-100">
+        {ad.image ? (
+          <Image
+            src={ad.image}
+            alt={ad.name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-slate-400">
+            Sin imagen
+          </div>
+        )}
+      </div>
       <h2 className="text-xl font-bold text-slate-800 mb-2">{ad.name}</h2>
 
       <p className="text-sm text-slate-600 mb-4 grow">{ad.description}</p>

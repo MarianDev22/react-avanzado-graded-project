@@ -31,6 +31,12 @@ export default function AdForm() {
         placeholder="Descripción"
         className="border p-2 rounded"
       />
+      <input 
+        name="image" 
+        type="url" 
+        placeholder="URL de la imagen (ej: https://...)" 
+        className="border p-2 rounded" 
+      />
 
       <CreateAdButton />
 

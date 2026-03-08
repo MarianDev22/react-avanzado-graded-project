@@ -20,6 +20,7 @@ export async function createAdAction(
     name: String(formData.get("name")),
     description: String(formData.get("description")),
     price: Number(formData.get("price")),
+    image: formData.get("image"),
   };
 
   const parsed = adSchema.safeParse(rawData);
