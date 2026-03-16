@@ -1,4 +1,4 @@
-#Marketplace Ads - React Avanzado
+# Marketplace Ads - React Avanzado
 
 Este proyecto es una plataforma de anuncios (marketplace) construida con
 Next.js 15 y Prisma, enfocada en la implementación de patrones avanzados
@@ -9,7 +9,7 @@ el manejo robusto de errores mediante "Matrioshkas".
 
 ## Funcionalidades Implementadas
 
-###Gestión de Anuncios:
+### Gestión de Anuncios:
 
 Creación de anuncios con validación mediante Zod.
 
@@ -18,13 +18,13 @@ borrar).
 
 Visualización dinámica mediante `AdCard` con diseño responsivo.
 
-###Arquitectura de Datos:
+### Arquitectura de Datos:
 
 Modelado de base de datos con Prisma ORM (User y Ad).
 
 Sistema de Seed para poblar la base de datos con datos de prueba
 
-###Gestión de Errores (Patrón Matrioshka):
+### Gestión de Errores (Patrón Matrioshka):
 
 `loading.tsx`: Estados de carga granulares.
 
@@ -35,13 +35,13 @@ Sistema de Seed para poblar la base de datos con datos de prueba
 `global-error.tsx`: Último escudo para errores críticos en el layout
 raíz.
 
-###UI/UX:
+### UI/UX:
 
 Navegación fluida Botones con estados de carga (useFormStatus).
 
 Componentes estilizados con Tailwind CSS.
 
-##Tecnologías Utilizadas Framework: Next.js 16 (App Router).
+## Tecnologías Utilizadas Framework: Next.js 16 (App Router).
 
 Base de Datos: PostgreSQL (vía Prisma).
 
